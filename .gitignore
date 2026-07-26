@@ -1,6 +1,32 @@
+# Python build artifacts
 __pycache__
 *.pyc
-.venv
+*.egg-info
 dist/
+
+# Virtual environment
+.venv
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables (may contain secrets)
 .env
+
+# HIPPMEM runtime data (redb database + full-text index)
+*.redb
+fulltext/
+
+# Temporary files
+.tmp/
+
+# Project-local CLAUDE.md (gitignored per project convention)
 CLAUDE.md
