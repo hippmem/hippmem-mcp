@@ -91,6 +91,26 @@ Copy `.env.example` to `.env` and configure:
 
 The deterministic fallback backend requires no API key, no GPU, and no network connection.
 
+### Claude Code
+
+Claude Code supports MCP natively. Add to your Claude Code MCP config (`.claude/mcp.json` or project `.mcp.json`):
+
+```json
+{
+  "mcpServers": {
+    "hippmem": {
+      "command": "hippmem-mcp"
+    }
+  }
+}
+```
+
+Then in any Claude Code session:
+
+```
+Use retrieve_memories to check what we know about this project before starting.
+```
+
 ### Other MCP Clients
 
 hippmem-mcp speaks standard MCP over stdio. Configure any [MCP-compatible client](https://modelcontextprotocol.io/clients) the same way — point the `command` to `hippmem-mcp` or `python -m hippmem_mcp.server`.
@@ -115,6 +135,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for commit conventions, PR workflow, and 
 
 ## Documentation
 
+- [Best Practices](docs/best-practices.md) — when to write, how to query, prompt templates
 - [HIPPMEM main project](https://github.com/hippmem/hippmem) — engine architecture, concepts, and API reference
 - [MCP specification](https://modelcontextprotocol.io/) — Model Context Protocol
 - [Changelog](CHANGELOG.md)
