@@ -1,6 +1,5 @@
 """Tests for hippmem-mcp server."""
 
-import pytest
 from hippmem_mcp.server import mcp
 
 
@@ -115,8 +114,11 @@ _test_engine = None
 def _get_test_engine():
     global _test_engine
     if _test_engine is None:
+        import os
+        import tempfile
+
         from hippmem import Engine
-        import tempfile, os
+
         tmpdir = tempfile.mkdtemp()
         _test_engine = Engine.open(os.path.join(tmpdir, "test.redb"))
     return _test_engine

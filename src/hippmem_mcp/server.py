@@ -5,12 +5,12 @@ Usage:
     hippmem-mcp                    # stdio transport (for Claude Desktop etc.)
 """
 
-from dataclasses import dataclass
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
+from dataclasses import dataclass
 
-from mcp.server.fastmcp import FastMCP
 from hippmem import Engine
+from mcp.server.fastmcp import FastMCP
 
 
 @dataclass
