@@ -1,0 +1,5 @@
+# COPYRIGHT · hippmem-mcp
+hippmem-mcp is distributed under the Apache License 2.0 (see LICENSE).
+This is an MCP server wrapper for HIPPMEM. The underlying engine
+(hippmem-engine) is AGPL-3.0-only.
+For commercial licensing: hippmem@gmail.com
