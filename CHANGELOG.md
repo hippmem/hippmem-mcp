@@ -7,7 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [0.1.0] — unreleased
+## [0.2.0] — 2026-08-05
+
+### Changed
+- Dependency `hippmem>=0.2.0`.
+- Underlying engine now supports Hash/Neural embedders; MCP server
+  inherits both — no code change needed.
+
+[0.2.0]: https://github.com/hippmem/hippmem-mcp/releases/tag/v0.2.0
+
+## [0.1.0] — 2026-07-26
 
 ### Added
 - Initial release: MCP server for HIPPMEM associative memory.

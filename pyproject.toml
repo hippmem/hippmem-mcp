@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "hippmem-mcp"
-version = "0.1.0"
+version = "0.2.0"
 description = "MCP server for HIPPMEM — give AI tools long-term associative memory"
 authors = [{ name = "hippmem", email = "hippmem@gmail.com" }]
 readme = "README.md"
@@ -18,7 +18,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
 dependencies = [
-    "hippmem>=0.1.0",
+    "hippmem>=0.2.0",
     "mcp>=1.0.0",
 ]
 
