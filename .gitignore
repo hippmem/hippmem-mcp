@@ -30,5 +30,6 @@ fulltext/
 
 # Project-local CLAUDE.md (gitignored per project convention)
 CLAUDE.md
-scripts/publish.sh
+scripts/
 .publish-venv
+.claude/rules/
