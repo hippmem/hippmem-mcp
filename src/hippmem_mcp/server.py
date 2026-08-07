@@ -5,12 +5,13 @@ Usage:
     hippmem-mcp                    # stdio transport (for Claude Desktop etc.)
 """
 
-from collections.abc import AsyncIterator
+from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 from dataclasses import dataclass
 
 from hippmem import Engine
-from mcp.server.fastmcp import FastMCP
+from mcp.server import MCPServer
+from mcp.server.mcpserver import Context
 
 
 @dataclass
@@ -19,7 +20,7 @@ class AppContext:
 
 
 @asynccontextmanager
-async def lifespan(server: FastMCP) -> AsyncIterator[AppContext]:
+async def lifespan(server: MCPServer) -> AsyncGenerator[AppContext]:
     engine = Engine.open()
     try:
         yield AppContext(engine=engine)
@@ -27,11 +28,12 @@ async def lifespan(server: FastMCP) -> AsyncIterator[AppContext]:
         engine.close()
 
 
-mcp = FastMCP("hippmem", lifespan=lifespan)
+mcp = MCPServer("hippmem", lifespan=lifespan)
 
 
 @mcp.tool()
 def write_memory(
+    ctx: Context[AppContext],
     content: str,
     content_type: str | None = None,
     importance: float | None = None,
@@ -47,7 +49,6 @@ def write_memory(
                       TaskState, Correction, Event, Reflection.
         importance: 0.0-1.0 importance hint.
     """
-    ctx = mcp.get_context()
     engine = ctx.request_context.lifespan_context.engine
     out = engine.write(content, content_type=content_type, importance=importance)
     return {
@@ -58,6 +59,7 @@ def write_memory(
 
 @mcp.tool()
 def retrieve_memories(
+    ctx: Context[AppContext],
     query: str,
     top_k: int = 5,
     max_hops: int | None = None,
@@ -72,7 +74,6 @@ def retrieve_memories(
         top_k: Maximum number of results.
         max_hops: Graph traversal depth (None = auto).
     """
-    ctx = mcp.get_context()
     engine = ctx.request_context.lifespan_context.engine
     results = engine.retrieve(query, top_k=top_k, max_hops=max_hops)
     return [

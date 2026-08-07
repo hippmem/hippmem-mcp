@@ -19,7 +19,7 @@ classifiers = [
 ]
 dependencies = [
     "hippmem>=0.2.0",
-    "mcp>=1.0.0",
+    "mcp>=2.0.0",
 ]
 
 [project.urls]
@@ -30,4 +30,4 @@ Repository = "https://github.com/hippmem/hippmem-mcp"
 hippmem-mcp = "hippmem_mcp.server:main"
 
 [project.optional-dependencies]
-dev = ["pytest>=7", "mcp[cli]>=1.0"]
+dev = ["pytest>=7", "mcp[cli]>=2.0"]
