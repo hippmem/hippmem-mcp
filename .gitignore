@@ -24,6 +24,7 @@ Thumbs.db
 # HIPPMEM runtime data (redb database + full-text index)
 *.redb
 fulltext/
+hippmem_data
 
 # Temporary files
 .tmp/
